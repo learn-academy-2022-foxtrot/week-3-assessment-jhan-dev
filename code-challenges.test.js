@@ -26,20 +26,50 @@
 describe("fibonacciSeq", () => {
   //Create an it function that will explain what is the purpose of the fibonaccsiSeq function
   it("Create a function that takes in a number (greater than 2) and returns an array that length containing the numbers of the Fibonacci sequence.", () => {
+
     //Given 1st testCase is to equal the Expected output: [1, 1, 2, 3, 5, 8]
     const fibLength1 = 6;
     expect(fibonacciSeq(fibLength1)).toEqual([1, 1, 2, 3, 5, 8]);
 
     //Given 2nd testCase is to equal the Expected output: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
     const fibLength2 = 10;
-    expect(fibonacciSeq(fibLength2)).toEqual([
-      1, 1, 2, 3, 5, 8, 13, 21, 34, 55,
-    ]);
+    expect(fibonacciSeq(fibLength2)).toEqual([1, 1, 2, 3, 5, 8, 13, 21, 34, 55,]);
+
   });
 });
 
 //After running yarn jest, I should expect a good fail prompt saying function is not defined.
 //    ReferenceError: fibonacciSeq is not defined.
+
+
+//ALTERNATIVE SOLUTION FOR #1 USING while-loop
+
+// const fibonacciSeq = (num) => {
+//   // Create 3 variables, 2 representing num1 & num2 and result representing an empty array
+//   let num1 = 0
+//   let num2 = 1
+//   let result = []
+
+//   // Create a while loop that will keep iterating Until num is NOT greater than 0
+//   while (num > 0) {
+//     // Create num3 to be a value holder
+//     let num3 = num1
+
+//     // Reassign num1 to have the value of num2 + num3 to get the sum
+//     num1 = num2 + num3
+
+//     // Reassign num2 to = num3
+//     num2 = num3
+
+//     //Decrement down parameter num by 1
+//     num--
+
+//     //Push the value of num1 into the result array after num1, num2, num3 have values updated and num has decremented down by 1
+//     result.push(num1)
+//   }
+//   //return the result array
+//   return result
+// }
 
 //To make the test pass I will need to create the function I was testing above and pass in a number parameter.
 const fibonacciSeq = (num) => {
@@ -52,15 +82,15 @@ const fibonacciSeq = (num) => {
 
   //Create a for loop that will iterate until greater than or equal to num
   for (let i = 0; i < num; i++) {
-    //Create fibonacci seq add variable called fAdd with the value of num1 + num2
-    let fAdd = num1 + num2;
+    //Create fibonacci seq add variable called nHolder with the value of num1 + num2
+    let nHolder = num1 + num2;
 
     //Push num1 into seqArr
     seqArr.push(num1);
 
     //Update num1 and num2 variables after push before next iteration
     num1 = num2;
-    num2 = fAdd;
+    num2 = nHolder;
   }
   //Return seqArr holding all pushed values from loop
   return seqArr;
@@ -92,6 +122,7 @@ const fibonacciSeq = (num) => {
 describe("sortObj", () => {
   //Create an it function that will explain what is the purpose of the sortObj function
   it("Create a function that takes in an object and returns an array of the numbers sorted from least to greatest.", () => {
+
     //Given 1st testCase is to equal the Expected output: [15, 15, 20, 30, 30, 60, 90]
     const studyMinutesWeek1 = {
       sunday: 90,
@@ -115,16 +146,24 @@ describe("sortObj", () => {
       saturday: 65,
     };
     expect(sortObj(studyMinutesWeek2)).toEqual([10, 15, 20, 45, 60, 65, 100]);
+
   });
 });
+
 //After running yarn jest, I should expect a good fail prompt saying function is not defined.
 //    ReferenceError: sortObj is not defined
+
+//ALTERNATIVE SOLUTION FOR #2 USING Object.values()
+// const sortObj = (obj) => {
+//   //Return using Object.values() method using the passed in parameter obj, then using the sort() method a - b to sort all the elements inside from least to greatest
+//   return Object.values(obj).sort((a, b) => a - b)
+// }
 
 //To make the test pass I will need to create the function I was testing above and pass in a object parameter.
 const sortObj = (obj) => {
   //Create an empty array to hold values from object later
   let sortedArr = [];
-
+  
   //Use the For in loop to iterate the object w/ a var
   for (let val in obj) {
     //Push into the empty sortedArr by accessing obj[val] => ex: sunday: 100
@@ -161,6 +200,7 @@ const sortObj = (obj) => {
 describe("accuSum", () => {
   //Create an it function that will explain what is the purpose of the arrSum function
   it("Create a function that takes in an array and returns an array of the accumulating sum. An empty array should return an empty array.", () => {
+
     //Given 1st testCase is to equal the Expected output: [100, 83, 60, 51]
     const accountTransactions1 = [100, -17, -23, -9];
     expect(accuSum(accountTransactions1)).toEqual([100, 83, 60, 51]);
@@ -172,10 +212,15 @@ describe("accuSum", () => {
     //Given 3nd testCase is to equal the Expected output: []
     const accountTransactions3 = [];
     expect(accuSum(accountTransactions3)).toEqual([]);
+
   });
 });
 //After running yarn jest, I should expect a good fail prompt saying function is not defined.
 //    ReferenceError: accuSum is not defined
+
+//ALTERNATIVE SOLUTION FOR #3 USING .map() method
+//We will create a single line arrow function return with no curly braces to use a .map() to iterate the arr parameter and at the start push 0 changes to the first iteration to the array copy output
+const accuSum = (arr) => arr.map((currentVal = 0, addThis => currentval += addThis))
 
 //To make the test pass I will need to create the function I was testing above and pass in a array parameter.
 const accuSum = (arr) => {
