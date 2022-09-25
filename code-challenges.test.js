@@ -219,8 +219,8 @@ describe("accuSum", () => {
 //    ReferenceError: accuSum is not defined
 
 //ALTERNATIVE SOLUTION FOR #3 USING .map() method
-//We will create a single line arrow function return with no curly braces to use a .map() to iterate the arr parameter and at the start push 0 changes to the first iteration to the array copy output
-const accuSum = (arr) => arr.map((currentVal = 0, addThis => currentval += addThis))
+// //We will create a single line arrow function return with no curly braces to use a .map() to iterate the arr parameter and at the start push 0 changes to the first iteration to the array copy output
+// const accuSum = (arr) => arr.map((currentVal = 0, addThis => currentval += addThis))
 
 //To make the test pass I will need to create the function I was testing above and pass in a array parameter.
 const accuSum = (arr) => {
