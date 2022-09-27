@@ -65,11 +65,13 @@
         // No need to change anything ABOVE this line ^
 
         return (
+          //Wrapped fragment tags around return, added drawCard in line 71 onClick, fixed onclick to onClick on line 74.
+          <>
           <h1>Draw a Card</h1>
-          <button onClick={}>
+          <button onClick={drawCard}> 
             Click to Draw a Card
           </button>
-          <button onclick={shuffle}>
+          <button onClick={shuffle}>  
             Return Cards and Shuffle Deck
           </button>
           <div style={handStyles}>
@@ -81,6 +83,7 @@
               )
             })}
           </div>
+          </>
         )
       }
 
